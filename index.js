@@ -15,7 +15,7 @@ function divide(a, b) {
 
 let firstNumber, operator, secondNumber;
 
-function operate(firstNumber, operator, secondNumber) [
+function operate(firstNumber, operator, secondNumber) {
     
     switch(operator) {
         case "+":
@@ -29,4 +29,4 @@ function operate(firstNumber, operator, secondNumber) [
         default:
             return "error";
     }
-]
+}
