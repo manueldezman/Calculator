@@ -40,6 +40,7 @@ html {
     text-align: center;
     background-color: #999DA0;
     box-shadow: .3rem .3rem .1rem .1rem ;
+    cursor: pointer;
 
 }
 .operator {
@@ -52,6 +53,9 @@ html {
     margin-inline: auto;
     border-radius: 2rem;
     background-color: #A9BA9D;
+    font-size: 6rem;
+    text-align: end;
+    padding: 1rem;
 }
 
 .equal, .clear {

@@ -30,3 +30,20 @@ function operate(firstNumber, operator, secondNumber) {
             return "error";
     }
 }
+
+const button = document.querySelector(".buttons");
+const displayDiv = document.querySelector(".display");
+
+function display(event) {
+    
+
+}
+
+button.addEventListener("click", (Event) => {
+    displayDiv.textContent = "";
+    let clicked = event.target.textContent;
+    console.log(clicked);
+    console.log(event.type);
+
+    displayDiv.textContent += clicked;
+});
