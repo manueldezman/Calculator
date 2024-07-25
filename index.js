@@ -1,5 +1,6 @@
 function add(a, b) {
-    return a + b;
+
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
@@ -22,7 +23,7 @@ function operate(firstNumber, operator, secondNumber) {
             return add(firstNumber, secondNumber);
         case "-":
             return subtract(firstNumber, secondNumber);
-        case "*":
+        case "X":
             return multiply(firstNumber, secondNumber);
         case "/":
             return divide(firstNumber, secondNumber);
@@ -34,16 +35,27 @@ function operate(firstNumber, operator, secondNumber) {
 const button = document.querySelector(".buttons");
 const displayDiv = document.querySelector(".display");
 
-function display(event) {
-    
-
-}
-
-button.addEventListener("click", (Event) => {
-    displayDiv.textContent = "";
+function display(Event) {
     let clicked = event.target.textContent;
-    console.log(clicked);
-    console.log(event.type);
 
-    displayDiv.textContent += clicked;
-});
+    if (clicked === "C") {
+        displayDiv.textContent = "";
+        secondNumber = "";
+        firstNumber = "";
+    }
+    else if (clicked === "=") {
+        secondNumber = displayDiv.textContent;
+        displayDiv.textContent = operate(firstNumber, operator, secondNumber);
+    }
+    else if (clicked === "+" || clicked === "-" || clicked === "/" || clicked === "X"){
+        firstNumber = displayDiv.textContent;
+        operator = clicked;
+        displayDiv.textContent = "";
+    }
+    else {
+        displayDiv.textContent += clicked;
+    }
+
+}  
+
+button.addEventListener("click", display);

@@ -58,6 +58,7 @@ html {
     text-align: end;
     padding: 1rem;
     margin-top: 1rem;
+    overflow: hidden;
 }
 
 .equal, .clear {
