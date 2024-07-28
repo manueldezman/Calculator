@@ -34,6 +34,9 @@ function operate(firstNumber, operator, secondNumber) {
 
 const button = document.querySelector(".buttons");
 const displayDiv = document.querySelector(".display");
+const active = Array.from(document.querySelectorAll(".operator"));
+
+
 
 function display(Event) {
     let clicked = event.target.textContent;
@@ -42,17 +45,22 @@ function display(Event) {
         displayDiv.textContent = "";
         secondNumber = "";
         firstNumber = "";
+        active.map(item => item.classList.remove("clicked"));
     }
     else if (clicked === "=") {
         secondNumber = displayDiv.textContent;
         displayDiv.textContent = operate(firstNumber, operator, secondNumber);
+        active.map(item => item.classList.remove("clicked"));
     }
     else if (clicked === "+" || clicked === "-" || clicked === "/" || clicked === "X"){
+        active.map(item => item.classList.remove("clicked"));
         firstNumber = displayDiv.textContent;
         operator = clicked;
+        event.target.classList.add("clicked");
         displayDiv.textContent = "";
     }
     else {
+        active.map(item => item.classList.remove("clicked"));
         displayDiv.textContent += clicked;
     }
 

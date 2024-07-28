@@ -47,6 +47,9 @@ html {
 .operator {
     background-color: #20B2AA;
 }
+.clicked {
+    background-color: #013220;
+}
 .display {
     width: 32rem;
     height: 9rem;
