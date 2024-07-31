@@ -54,14 +54,17 @@ function display(Event) {
         firstNumber = "";
         operator = "";
         active.map(item => item.classList.remove("clicked"));
-        displayDiv.style.cssText = "text-decoration: none;";
 
     }
     else if (clicked === "=") {
         secondNumber = displayDiv.textContent;
-        displayDiv.textContent = operate(firstNumber, operator, secondNumber);
+        if (operator === "") {
+            displayDiv.textContent = displayDiv.textContent;
+        }
+        else {
+            displayDiv.textContent = operate(firstNumber, operator, secondNumber);
+        }
         active.map(item => item.classList.remove("clicked"));
-        displayDiv.style.cssText = "text-decoration: none;";
     }
     else if (clicked === "+" || clicked === "-" || clicked === "/" || clicked === "X"){
         active.map(item => item.classList.remove("clicked"));
@@ -69,7 +72,6 @@ function display(Event) {
         operator = clicked;
         event.target.classList.add("clicked");
         displayDiv.textContent = "";
-        displayDiv.style.cssText = "text-decoration: none;";
     }
     else {
         active.map(item => item.classList.remove("clicked"));
