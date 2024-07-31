@@ -57,13 +57,21 @@ html {
     margin-inline: auto;
     border-radius: 2rem;
     background-color: #A9BA9D;
-    font-size: 6rem;
     text-align: end;
     padding: 1rem;
     margin-top: 1rem;
     overflow: hidden;
 }
 
+.normal {
+    font-size: 6rem;
+}
+.small {
+    font-size: 3rem;
+}
 .equal, .clear {
     background-color: red;
+}
+.underline {
+    text-decoration: underline;
 }

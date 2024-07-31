@@ -36,21 +36,31 @@ const button = document.querySelector(".buttons");
 const displayDiv = document.querySelector(".display");
 const active = Array.from(document.querySelectorAll(".operator"));
 
+displayDiv.textContent = "";
+        secondNumber = "";
+        firstNumber = "";
 
+displayDiv.classList.remove("small");
+displayDiv.classList.add("normal");
 
 function display(Event) {
     let clicked = event.target.textContent;
+    let displayText = displayDiv.textContent;
+
 
     if (clicked === "C") {
         displayDiv.textContent = "";
         secondNumber = "";
         firstNumber = "";
         active.map(item => item.classList.remove("clicked"));
+        displayDiv.style.cssText = "text-decoration: none;";
+
     }
     else if (clicked === "=") {
         secondNumber = displayDiv.textContent;
         displayDiv.textContent = operate(firstNumber, operator, secondNumber);
         active.map(item => item.classList.remove("clicked"));
+        displayDiv.style.cssText = "text-decoration: none;";
     }
     else if (clicked === "+" || clicked === "-" || clicked === "/" || clicked === "X"){
         active.map(item => item.classList.remove("clicked"));
@@ -58,12 +68,28 @@ function display(Event) {
         operator = clicked;
         event.target.classList.add("clicked");
         displayDiv.textContent = "";
+        displayDiv.style.cssText = "text-decoration: none;";
     }
     else {
         active.map(item => item.classList.remove("clicked"));
-        displayDiv.textContent += clicked;
-    }
 
+        if (displayText.length > 11) {
+            let beginningText = displayText.slice(0, 11);
+            let underlinedText = displayText.slice(11);
+            displayDiv.innerHTML = `${beginningText}<span class="underline">${underlinedText}</span>`;
+
+    }
+        else if (displayText.length > 5) {
+            displayDiv.classList.remove("normal");
+            displayDiv.classList.add("small");
+            displayDiv.textContent += clicked;
+        }
+        else {
+            displayDiv.classList.remove("small");
+            displayDiv.classList.add("normal");
+            displayDiv.textContent += clicked;
+        }
+    }
 }  
 
 button.addEventListener("click", display);
