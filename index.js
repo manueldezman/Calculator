@@ -14,7 +14,7 @@ function divide(a, b) {
     return a / b;
 }
 
-let firstNumber, operator, secondNumber;
+let firstNumber, operator, secondNumber, counter;
 
 function operate(firstNumber, operator, secondNumber) {
     
@@ -39,6 +39,7 @@ const active = Array.from(document.querySelectorAll(".operator"));
 displayDiv.textContent = "";
         secondNumber = "";
         firstNumber = "";
+        counter = 0;
 
 displayDiv.classList.remove("small");
 displayDiv.classList.add("normal");
@@ -53,11 +54,14 @@ function display(Event) {
         secondNumber = "";
         firstNumber = "";
         operator = "";
+        counter = 0;
         active.map(item => item.classList.remove("clicked"));
 
     }
     else if (clicked === "=") {
-        secondNumber = displayDiv.textContent;
+        if (secondNumber === "") {
+            secondNumber = displayDiv.textContent;
+        }
         if (operator === "") {
             displayDiv.textContent = displayDiv.textContent;
         }
@@ -67,9 +71,21 @@ function display(Event) {
         active.map(item => item.classList.remove("clicked"));
     }
     else if (clicked === "+" || clicked === "-" || clicked === "/" || clicked === "X"){
-        active.map(item => item.classList.remove("clicked"));
-        firstNumber = displayDiv.textContent;
-        operator = clicked;
+        active.map(item => item.classList.remove("clicked")); 
+        if (firstNumber === "") {
+            firstNumber = displayDiv.textContent;
+        }
+        else if (secondNumber === "") {
+            secondNumber = displayDiv.textContent;
+        }
+
+        if (counter === 1) {
+            firstNumber = operate(firstNumber, operator, secondNumber);
+            secondNumber = "";
+            counter = 0;
+        }
+            operator = clicked;
+            counter = 1;
         event.target.classList.add("clicked");
         displayDiv.textContent = "";
     }
