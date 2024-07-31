@@ -52,6 +52,7 @@ function display(Event) {
         displayDiv.textContent = "";
         secondNumber = "";
         firstNumber = "";
+        operator = "";
         active.map(item => item.classList.remove("clicked"));
         displayDiv.style.cssText = "text-decoration: none;";
 
