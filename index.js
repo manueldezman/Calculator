@@ -1,3 +1,9 @@
+const button = document.querySelector(".buttons");
+const displayDiv = document.querySelector(".display");
+const active = Array.from(document.querySelectorAll(".operator"));
+
+let firstNumber, operator, secondNumber, counter;
+
 const calculator = (() => {
     
     let lastResult = 0; 
@@ -33,9 +39,6 @@ const calculator = (() => {
 })();
 
 
-
-let firstNumber, operator, secondNumber, counter;
-
 function operate(firstNumber, operator, secondNumber) {
     
     switch(operator) {
@@ -51,18 +54,6 @@ function operate(firstNumber, operator, secondNumber) {
             return "error";
     }
 }
-
-const button = document.querySelector(".buttons");
-const displayDiv = document.querySelector(".display");
-const active = Array.from(document.querySelectorAll(".operator"));
-
-displayDiv.textContent = "";
-        secondNumber = "";
-        firstNumber = "";
-        counter = 0;
-
-displayDiv.classList.remove("small");
-displayDiv.classList.add("normal");
 
 function display(event) {
     let clicked = event.target.textContent;
@@ -137,3 +128,12 @@ function display(event) {
 }  
 
 button.addEventListener("click", display);
+
+
+displayDiv.textContent = "";
+        secondNumber = "";
+        firstNumber = "";
+        counter = 0;
+
+displayDiv.classList.remove("small");
+displayDiv.classList.add("normal");
