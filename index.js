@@ -26,8 +26,9 @@ const calculator = (() => {
         return lastResult;
     }
 
+    const getLastResult = () => lastResult;
 
-    return { add, subtract, multiply, divide};
+    return { add, subtract, multiply, divide, getLastResult};
 
 })();
 
@@ -78,9 +79,14 @@ function display(event) {
 
     }
     else if (clicked === "=") {
+
+        if (firstNumber === "" && secondNumber === "" && operator === ""){
+            calculator.getLastResult();
+        }
         if (secondNumber === "") {
             secondNumber = displayDiv.textContent;
         }
+
         if (operator === "") {
             displayDiv.textContent = displayDiv.textContent;
         }
