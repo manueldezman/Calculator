@@ -81,7 +81,7 @@ function display(event) {
     else if (clicked === "=") {
 
         if (firstNumber === "" && secondNumber === "" && operator === ""){
-            calculator.getLastResult();
+            displayDiv.textContent = calculator.getLastResult();
         }
         if (secondNumber === "") {
             secondNumber = displayDiv.textContent;
