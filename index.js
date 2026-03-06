@@ -1,19 +1,37 @@
+const calculator = (() => {
+    
+    let lastResult = 0; 
 
-function add(a, b) {
+    function add(a, b) {
 
-    return Number(a) + Number(b);
-}
+        lastResult = Number(a) + Number(b);
 
-function subtract(a, b) {
-    return a - b;
-}
+        return lastResult;
+    }
+    
+    function subtract(a, b) {
+        lastResult =  a - b;
 
-function multiply(a, b) {
-    return a * b;
-}
-function divide(a, b) {
-    return a / b;
-}
+        return lastResult;
+    }
+    
+    function multiply(a, b) {
+        lastResult = a * b;
+
+        return lastResult;
+    }
+    function divide(a, b) {
+        lastResult = a / b;
+
+        return lastResult;
+    }
+
+
+    return { add, subtract, multiply, divide};
+
+})();
+
+
 
 let firstNumber, operator, secondNumber, counter;
 
@@ -21,13 +39,13 @@ function operate(firstNumber, operator, secondNumber) {
     
     switch(operator) {
         case "+":
-            return add(firstNumber, secondNumber);
+            return calculator.add(firstNumber, secondNumber);
         case "-":
-            return subtract(firstNumber, secondNumber);
+            return calculator.subtract(firstNumber, secondNumber);
         case "X":
-            return multiply(firstNumber, secondNumber);
+            return calculator.multiply(firstNumber, secondNumber);
         case "/":
-            return divide(firstNumber, secondNumber);
+            return calculator.divide(firstNumber, secondNumber);
         default:
             return "error";
     }
