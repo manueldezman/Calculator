@@ -1,3 +1,4 @@
+
 function add(a, b) {
 
     return Number(a) + Number(b);
@@ -44,7 +45,7 @@ displayDiv.textContent = "";
 displayDiv.classList.remove("small");
 displayDiv.classList.add("normal");
 
-function display(Event) {
+function display(event) {
     let clicked = event.target.textContent;
     let displayText = displayDiv.textContent;
 
